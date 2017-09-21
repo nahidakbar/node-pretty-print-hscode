@@ -1,0 +1,31 @@
+{
+  "name": "pretty-print-hscode",
+  "version": "0.0.1",
+  "description": "pretty print hardmnised system (HS) code",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jbn test",
+    "init": "jbn init -i babel",
+    "docs": "jbn docs",
+    "form": "jbn form",
+    "lint": "jbn lint",
+    "comp": "jbn comp"
+  },
+  "keywords": [
+    "pretty",
+    "print",
+    "hardmnised",
+    "system",
+    "(HS)",
+    "code"
+  ],
+  "author": "Nahid Akbar <mail@nahidakbar.net> (http://nahidakbar.net/)",
+  "license": "MIT",
+  "devDependencies": {
+    "jbn": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nahidakbar/node-pretty-print-hscode.git"
+  }
+}
