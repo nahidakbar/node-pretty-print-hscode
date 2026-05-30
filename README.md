@@ -1,19 +1,59 @@
-# pretty print HS code
+# pretty-print-hscode
 
-[![SCM](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/public.svg)](https://github.com/nahidakbar/node-pretty-print-hscode)
-[![Build Status](https://travis-ci.org/nahidakbar/node-pretty-print-hscode.svg?branch=master)](https://travis-ci.org/nahidakbar/node-pretty-print-hscode)
-[![Documentation](https://nahidakbar.github.io/node-pretty-print-hscode/badge.svg)](https://nahidakbar.github.io/node-pretty-print-hscode/)
-[![Coverage](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/lines.svg)](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/)
-[![Coverage](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/functions.svg)](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/)
-[![Coverage](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/branches.svg)](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/)
-[![Coverage](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/statements.svg)](https://nahidakbar.github.io/node-pretty-print-hscode/coverage/)
+Pretty print Harmonized System (HS) codes.
 
-## TL;DR
+HS codes are best stored without dots or labels for processing, but that form is
+harder to scan. This library adds the conventional separators and optional labels.
 
-    npm install pretty-print-hscode
-    ...
-    
-    const uglify = require('pretty-print-hscode');
-    ...
-    console.log(uglify('010101'))
-    // will print 0101.01
+## Install
+
+```sh
+npm install pretty-print-hscode
+```
+
+## Usage
+
+```js
+const prettyPrintHsCode = require("pretty-print-hscode");
+
+prettyPrintHsCode("010203");
+// "0102.03"
+
+prettyPrintHsCode("01020304", true);
+// "Subheading 0102.03.04"
+
+prettyPrintHsCode("01020304", { showLabel: true, isItem: true });
+// "Item 0102.03.04"
+
+prettyPrintHsCode("0102.03");
+// "0102.03"
+
+prettyPrintHsCode("I", { showLabel: true });
+// "Section I"
+```
+
+The package includes TypeScript declarations and supports the original boolean
+API: `prettyPrintHsCode(code, showLabel, isItem)`.
+
+## API
+
+### `prettyPrintHsCode(code, options)`
+
+```ts
+prettyPrintHsCode(code: string, showLabel?: boolean, isItem?: boolean): string;
+prettyPrintHsCode(code: string, options?: { showLabel?: boolean; isItem?: boolean }): string;
+```
+
+Non-digit separators in numeric HS codes are ignored before formatting.
+Non-numeric section codes such as `"I"` are returned unchanged, with an optional
+`Section` label. Invalid argument types throw `TypeError`.
+
+## Development
+
+```sh
+npm test
+npm run typecheck
+npm pack --dry-run
+```
+
+See [RELEASING.md](./RELEASING.md) before publishing a new version.

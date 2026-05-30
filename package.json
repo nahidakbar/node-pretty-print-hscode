@@ -1,31 +1,51 @@
 {
   "name": "pretty-print-hscode",
-  "version": "0.0.1",
-  "description": "pretty print hardmnised system (HS) code",
-  "main": "lib/index.js",
+  "version": "0.1.0",
+  "description": "Pretty print Harmonized System (HS) codes",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "require": "./src/index.js",
+      "default": "./src/index.js"
+    }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "src"
+  ],
+  "sideEffects": false,
   "scripts": {
-    "test": "jbn test",
-    "init": "jbn init -i babel",
-    "docs": "jbn docs",
-    "form": "jbn form",
-    "lint": "jbn lint",
-    "comp": "jbn comp"
+    "test": "node --test",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [
     "pretty",
     "print",
-    "hardmnised",
+    "harmonized",
     "system",
-    "(HS)",
+    "hs",
     "code"
   ],
   "author": "Nahid Akbar <mail@nahidakbar.net> (http://nahidakbar.net/)",
   "license": "MIT",
   "devDependencies": {
-    "jbn": "latest"
+    "@types/node": "^25.9.1",
+    "typescript": "^5.9.3"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/nahidakbar/node-pretty-print-hscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nahidakbar/node-pretty-print-hscode/issues"
+  },
+  "homepage": "https://github.com/nahidakbar/node-pretty-print-hscode#readme",
+  "funding": {
+    "url": "https://github.com/sponsors/nahidakbar"
   }
 }

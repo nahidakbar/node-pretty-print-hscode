@@ -1,16 +1,8 @@
 language: node_js
 node_js:
-  - "8"
-os:
-  -linux
+  - "18"
+  - "20"
+  - "22"
 script:
-  - npm run docs
   - npm run test
-  - npm run lint  
-deploy:
-  provider: pages
-  local_dir: node_docs
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  on:
-    branch: master
+  - npm run typecheck
